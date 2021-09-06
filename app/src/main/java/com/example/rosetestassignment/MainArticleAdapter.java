@@ -13,14 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.rosetestassignment.Model.Article;
+import com.example.rosetestassignment.rest.API;
 
 import java.util.List;
 
-public class MainArticleAdapter extends RecyclerView.Adapter<MainArticleAdapter.ViewHolder> {
+public class MainArticleAdapter extends RecyclerView.Adapter<MainArticleAdapter.ViewHolder>{
 
     private List<Article> articleArrayList;
     private Context context;
-    public OnRecyclerViewItemClickListener onRecyclerViewItemClickListener;
+    public OnRecyclerViewItemClickListener<API> onRecyclerViewItemClickListener;
 
     public MainArticleAdapter(List<Article> articleArrayList) {
         this.articleArrayList = articleArrayList;
@@ -49,16 +50,18 @@ public class MainArticleAdapter extends RecyclerView.Adapter<MainArticleAdapter.
     public int getItemCount() {
         return articleArrayList.size();
     }
+
+    public void OnRecyclerViewItemClickListener(MainActivity mainActivity) {
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder{
         private TextView titleText;
         private TextView descriptionText;
         private LinearLayout artilceAdapterParentLinear;
         private List<Article> articleList;
-        final RecyclerView mainRecycler = findViewById(R.id.activity_main_rv);
+        public RecyclerView mainRecycler ;
 
-        final MainArticleAdapter mainArticleAdapter = new MainArticleAdapter(articleList);
-       mainArticleAdapter.setOnRecyclerViewItemClickListener(MainActivity.this);
-         mainRecycler.setAdapter(mainArticleAdapter);
+
         ViewHolder(View view) {
             super(view);
             titleText = view.findViewById(R.id.article_adapter_tv_title);
@@ -74,7 +77,7 @@ public class MainArticleAdapter extends RecyclerView.Adapter<MainArticleAdapter.
             });
         }
     }
-    public void setOnRecyclerViewItemClickListener(OnRecyclerViewItemClickListener onRecyclerViewItemClickListener) {
+    public void setOnRecyclerViewItemClickListener(OnRecyclerViewItemClickListener<API> onRecyclerViewItemClickListener) {
         this.onRecyclerViewItemClickListener = onRecyclerViewItemClickListener;
     }
             }

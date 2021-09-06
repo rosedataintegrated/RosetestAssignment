@@ -1,4 +1,8 @@
 package com.example.rosetestassignment;
 
-public class OnRecyclerViewItemClickListener {
+import android.view.View;
+
+public class OnRecyclerViewItemClickListener<A> {
+    public void onItemClick(int adapterPosition, View view) {
+    }
 }
